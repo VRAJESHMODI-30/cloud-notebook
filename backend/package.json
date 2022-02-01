@@ -9,7 +9,11 @@
   "author": "Vrajesh Modi",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "json-web-token": "^3.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.8"
   },
   "devDependencies": {
