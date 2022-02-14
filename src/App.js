@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "./components/About";
 import NoteState from "./context/notes/NoteState";
+import Alert from "./components/Alert";
 
 function App() {
   return (
@@ -11,17 +12,20 @@ function App() {
       <NoteState>
         <Router>
           <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/about">
-              <About />
-            </Route>
-            <Route exact path="/users">
-              {/* <Users /> */}
-            </Route>
-          </Switch>
+          <Alert message="This is Alert" />
+          <div className="container">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/about">
+                <About />
+              </Route>
+              <Route exact path="/users">
+                {/* <Users /> */}
+              </Route>
+            </Switch>
+          </div>
         </Router>
       </NoteState>
     </>
