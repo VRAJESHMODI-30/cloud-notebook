@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const Signup = () => {
+const Signup = (props) => {
   const host = "http://localhost:5000";
   const [checkBox, setCheckBox] = useState(true);
   const [credentials, setCredentials] = useState({
@@ -10,6 +10,7 @@ const Signup = () => {
     password: "",
   });
   let history = useHistory();
+  const { showAlert } = props;
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -36,16 +37,17 @@ const Signup = () => {
     if (json.success) {
       localStorage.setItem("token", json.authtoken);
       history.push("/");
+      showAlert("success", "Welcome to Cloud-Notebook");
     } else {
       credentials.password.length < 5
         ? alert("required atleast 5 character password")
-        : alert("Invalid crendentials!");
+        : showAlert("danger", json.error);
     }
   };
 
   return (
     <div>
-      <section className="vh-100" style={{ backgroundColor: "#eee" }}>
+      <section className="vh-100 mt-4" style={{ backgroundColor: "#eee" }}>
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-lg-12 col-xl-11">
